@@ -1,1 +1,21 @@
 @import "tailwindcss";
+
+@font-face {
+  font-family:Cooll ;
+  src: url(/fonts/Cool.woff2);
+}
+.cool{
+  font-family:Cooll,sans-serif;
+}
+
+@layer base{
+  :root,html {
+    font-family: 'Cooll', system-ui, -apple-system, sans-serif;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; 
+}
