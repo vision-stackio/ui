@@ -55,7 +55,7 @@ export default function Login() {
                 placeholder="Email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-[#f4f4f5] border-none rounded-xl px-4 py-3.5 text-[15px] focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
+                className="w-full bg-[#f4f4f5] border-none rounded-xl px-4 py-3.5 text-[15px] focus:ring-2 focus:ring-black-500 outline-none transition-all"
                 required
               />
               <input
@@ -63,7 +63,7 @@ export default function Login() {
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-[#f4f4f5] border-none rounded-xl px-4 py-3.5 text-[15px] focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
+                className="w-full bg-[#f4f4f5] border-none rounded-xl px-4 py-3.5 text-[15px] focus:ring-2 focus:ring-black-500 outline-none transition-all"
                 required
               />
 
@@ -76,8 +76,8 @@ export default function Login() {
                 disabled={!isFormValid || submitting}
                 className={`w-full font-semibold py-3.5 rounded-xl transition-all cursor-pointer duration-300 ${
                   isFormValid && !submitting
-                    ? "bg-[#8b8df8] text-white shadow-lg shadow-indigo-200 hover:opacity-90 active:scale-[0.98]"
-                    : "bg-[#8b8df8]/20 text-[#8b8df8] cursor-not-allowed"
+                    ? "bg-[#141415] text-white shadow-lg shadow-black-200 hover:opacity-90 active:scale-[0.98]"
+                    : "bg-[#8b8df8]/20 text-gray-600 cursor-not-allowed"
                 }`}
               >
                 {submitting ? "Logging in…" : "Continue with email"}
@@ -86,10 +86,10 @@ export default function Login() {
           </form>
 
           <div className="flex justify-between w-full mt-2 text-[14px] text-slate-500">
-            <Link to="/forgot-password" className="hover:text-indigo-500 hover:underline">
+            <Link to="/forgot-password" className="hover:text-black-500 hover:underline">
               Forgot password?
             </Link>
-            <Link to="/register" className="text-indigo-500 font-medium hover:underline">
+            <Link to="/register" className="text-black-500 font-medium hover:underline">
               Create an account
             </Link>
           </div>
@@ -99,7 +99,7 @@ export default function Login() {
       {/* Right side - Visual */}
       <div className="hidden lg:flex items-center justify-center relative overflow-hidden bg-[#fafafa]">
         <img
-          src="/image/login.gif"
+          src="/images/"
           alt="login"
           className="absolute inset-0 w-full h-full object-cover"
         />

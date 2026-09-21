@@ -52,7 +52,7 @@ export default function ResetPassword() {
                     <form onSubmit={submit} className="w-full">
                         <div className="w-full space-y-3 mb-4">
                             {done ? (
-                                <p className="text-indigo-500 text-sm text-center">
+                                <p className="text-black-500 text-sm text-center">
                                     Password updated — redirecting to login…
                                 </p>
                             ) : (
@@ -62,7 +62,7 @@ export default function ResetPassword() {
                                         placeholder="New password (min 8 characters)"
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
-                                        className="w-full bg-[#f4f4f5] border-none rounded-xl px-4 py-3.5 text-[15px] focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
+                                        className="w-full bg-[#f4f4f5] border-none rounded-xl px-4 py-3.5 text-[15px] focus:ring-2 focus:ring-black-500 outline-none transition-all"
                                         required
                                         minLength={8}
                                     />
@@ -75,8 +75,8 @@ export default function ResetPassword() {
                                         type="submit"
                                         disabled={!isFormValid}
                                         className={`w-full font-semibold py-3.5 rounded-xl transition-all duration-300 ${isFormValid
-                                                ? "bg-[#8b8df8] text-white shadow-lg shadow-indigo-100 cursor-pointer hover:opacity-90 active:scale-[0.98]"
-                                                : "bg-[#8b8df8]/20 text-[#8b8df8] cursor-not-allowed"
+                                                ? "bg-[#1b1b1c] text-white shadow-lg shadow-black-200 cursor-pointer hover:opacity-90 active:scale-[0.98]"
+                                                : "bg-[#8b8df8]/20 text-gray-600 cursor-not-allowed"
                                             }`}
                                     >
                                         Reset password
@@ -87,7 +87,7 @@ export default function ResetPassword() {
                     </form>
 
                     <p className="text-[14px] text-slate-500 flex items-center justify-center gap-1.5 mt-4">
-                        <Link to="/login" className="text-indigo-500 font-medium hover:underline">
+                        <Link to="/login" className="text-black-500 font-medium hover:underline">
                             Back to login
                         </Link>
                     </p>

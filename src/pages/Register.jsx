@@ -69,7 +69,7 @@ export default function Register() {
                 placeholder="Full name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full bg-[#f4f4f5] border-none rounded-xl px-4 py-3.5 text-[15px] focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
+                className="w-full bg-[#f4f4f5] border-none rounded-xl px-4 py-3.5 text-[15px] focus:ring-2 focus:ring-black-500 outline-none transition-all"
                 required
               />
               <input
@@ -77,7 +77,7 @@ export default function Register() {
                 placeholder="Email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-[#f4f4f5] border-none rounded-xl px-4 py-3.5 text-[15px] focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
+                className="w-full bg-[#f4f4f5] border-none rounded-xl px-4 py-3.5 text-[15px] focus:ring-2 focus:ring-black-500 outline-none transition-all"
                 required
               />
               <input
@@ -85,7 +85,7 @@ export default function Register() {
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-[#f4f4f5] border-none rounded-xl px-4 py-3.5 text-[15px] focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
+                className="w-full bg-[#f4f4f5] border-none rounded-xl px-4 py-3.5 text-[15px] focus:ring-2 focus:ring-black-500 outline-none transition-all"
                 required
               />
               <input
@@ -93,7 +93,7 @@ export default function Register() {
                 placeholder="Confirm password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="w-full bg-[#f4f4f5] border-none rounded-xl px-4 py-3.5 text-[15px] focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
+                className="w-full bg-[#f4f4f5] border-none rounded-xl px-4 py-3.5 text-[15px] focus:ring-2 focus:ring-black-500 outline-none transition-all"
                 required
               />
 
@@ -108,8 +108,8 @@ export default function Register() {
                 disabled={!isFormValid || submitting || done}
                 className={`w-full font-semibold py-3.5 rounded-xl transition-all duration-300 ${
                   isFormValid && !submitting && !done
-                    ? "bg-[#8b8df8] text-white shadow-lg shadow-indigo-100 cursor-pointer hover:opacity-90 active:scale-[0.98]"
-                    : "bg-[#8b8df8]/20 text-[#8b8df8] cursor-not-allowed"
+                    ? "bg-[#1b1b1c] text-white shadow-lg shadow-indigo-100 cursor-pointer hover:opacity-90 active:scale-[0.98]"
+                    : "bg-[#8b8df8]/20 text-gray-600 cursor-not-allowed"
                 }`}
               >
                 {submitting ? "Creating account..." : "Continue with email"}
@@ -119,7 +119,7 @@ export default function Register() {
 
           <p className="text-[14px] text-slate-500 flex items-center justify-center gap-1.5 mt-4">
             Already have an account?
-            <Link to="/login" className="text-indigo-500 font-medium hover:underline">
+            <Link to="/login" className="text-black-500 font-medium hover:underline">
               Login
             </Link>
           </p>
