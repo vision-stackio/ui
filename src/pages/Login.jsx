@@ -38,7 +38,7 @@ export default function Login() {
       <div className="flex flex-col items-center justify-center px-8 py-12">
         <div className="w-full max-w-[360px] flex flex-col items-center text-center">
           <Link to="/">
-            <img src="/image/b.png" className="w-10 mb-8" alt="Logo" />
+            <img src="/images/Vision.png" className="w-16 mb-6" alt="Logo" />
           </Link>
 
           <h1 className="text-2xl font-bold text-[#121212] mb-2">

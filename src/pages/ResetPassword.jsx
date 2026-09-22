@@ -28,18 +28,12 @@ export default function ResetPassword() {
     };
 
     return (
-        <div className="min-h-screen w-full grid grid-cols-1 lg:grid-cols-2 bg-white">
-            <div className="hidden lg:flex items-center justify-center relative overflow-hidden bg-[#fafafa]">
-                <img
-                    src="/image/login.gif"
-                    alt="reset password"
-                    className="absolute inset-0 w-full h-full object-cover"
-                />
-            </div>
+        <div className="min-h-screen w-full flex items-center justify-center bg-white">
+           
             <div className="flex flex-col items-center justify-center px-8 py-12">
                 <div className="w-full max-w-[360px] flex flex-col items-center text-center">
                     <Link to="/">
-                        <img src="/image/b.png" className="w-10 mb-8" alt="Logo" />
+            <img src="/images/Vision.png" className="w-16 mb-6" alt="Logo" />
                     </Link>
 
                     <h1 className="text-2xl font-bold text-[#121212] mb-2">
