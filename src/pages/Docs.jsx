@@ -877,7 +877,9 @@ export default function Docs() {
       >
         <div className="max-w-[1080px] mx-auto px-6 h-[54px] flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <img src="/images/Vision.png" alt="Vision Logo" className="h-[26px]" />
+            <a href="/">
+              <img src="/images/Vision.png" alt="Vision Logo" className="h-[26px]" />
+            </a>
             <span className="font-serif text-lg text-[#0d0d0d]">Vision</span>
             <span className="font-mono text-[10px] text-[#bbb] tracking-[0.08em] mt-0.5">
               docs
