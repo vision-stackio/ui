@@ -16,12 +16,14 @@ export default function FloatingInput({
   const id = useId();
   const [focused, setFocused] = useState(false);
   const [show, setShow] = useState(false);
+
+  // Label still floats when there is a value
   const active = focused || String(value ?? "").length > 0;
 
-  // Only change: blue → black
+  // Ring only appears while focused (disappears on blur) — same as Forgot Password
   const ring = error
     ? "border-red-500 ring-1 ring-red-500"
-    : active
+    : focused
       ? "border-black ring-1 ring-black"
       : "border-gray-300 hover:border-gray-400";
 

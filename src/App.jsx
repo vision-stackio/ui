@@ -58,6 +58,18 @@ export default function App() {
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/unauthorized" element={<Unauthorized />} />
 
+          {/* Compiler: its own page, outside the dashboard layout */}
+          <Route
+            path="/compiler"
+            element={
+              <ProtectedRoute>
+                <RoleRoute minRole="ADMIN">
+                  <Compiler standalone />
+                </RoleRoute>
+              </ProtectedRoute>
+            }
+          />
+
           {/* Protected — everything under /dashboard requires an authenticated session */}
           <Route
             path="/dashboard/*"

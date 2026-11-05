@@ -217,10 +217,10 @@ export default function Sidebar() {
             }
           `}</style>
 
-          {allLinks.map(({ to, label, icon: Icon }) => (
+          {allLinks.map(({ to, href, label, icon: Icon }) => (
             <NavLink
               key={to || "root"}
-              to={`/dashboard${to ? `/${to}` : ""}`}
+              to={href || `/dashboard${to ? `/${to}` : ""}`}
               end={to === ""}
               title={collapsed ? label : undefined}
               className={({ isActive }) =>

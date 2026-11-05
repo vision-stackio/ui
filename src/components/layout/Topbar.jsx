@@ -1,53 +1,44 @@
-import { Link } from "react-router-dom";
 import RobotLinkBadges from "../robot/RobotLinkBadges";
 import { useControlMode } from "../../hooks/useControlMode";
 import { useSimMode } from "../../hooks/useSimMode";
-import { useTheme } from "../../state/ThemeContext";
-import Badge from "../common/Badge";
+import { useLocation } from "react-router-dom";
+import { Gamepad2, Brain, Cuboid, Loader } from "lucide-react";
+import { PillGroup, Seg } from "./StatusPill";
 
-function ThemeToggle() {
-  const { theme, toggleTheme } = useTheme();
-  const isLight = theme === "light";
-
-  return (
-    <button
-      onClick={toggleTheme}
-      title={isLight ? "Switch to dark mode" : "Switch to light mode"}
-      className="w-8 h-8 flex items-center justify-center rounded-full text-vision-muted hover:bg-vision-hover/10 hover:text-vision-text transition"
-    >
-      {isLight ? (
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-        </svg>
-      ) : (
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <circle cx="12" cy="12" r="4" />
-          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
-        </svg>
-      )}
-    </button>
-  );
+const TITLES = {
+  "": "Dashboard", monitoring: "Monitoring", robot: "Robot", camera: "Live Camera", tracking: "Person Tracking",
+  audio: "Audio", ultrasonic: "Ultrasonic", memory: "Memory Lookup", brain: "Brain", mental: "Mental Intelligence",
+  decisions: "Decisions", reactions: "Reactions", tasks: "Tasks", commands: "Commands", "control/eye": "Eye Control",
+  "control/leg": "Leg Control", "control/gait": "Gait Control", telemetry: "Telemetry", logs: "Logs", safety: "Safety",
+  simulation: "Simulation", compiler: "Compiler", people: "People", objects: "Objects", users: "Users", settings: "Settings",
+};
+function pageTitle(pathname) {
+  const rest = pathname.replace(/^\/dashboard\/?/, "").replace(/\/$/, "");
+  if (rest in TITLES) return TITLES[rest];
+  const two = rest.split("/").slice(0, 2).join("/");
+  return TITLES[two] ?? TITLES[rest.split("/")[0]] ?? "";
 }
 
 export default function Topbar() {
   const { mode } = useControlMode();
   const sim = useSimMode();
+  const { pathname } = useLocation();
+  const manual = mode === "MANUAL";
+  const modeLabel = mode == null ? "…" : manual ? "Manual" : "Autonomous";
 
   return (
-    <header className="h-14 flex items-center justify-between px-6 border-vision-border/5 bg-vision-panel/30 backdrop-blur-sm x1">
-      <div className="text-sm font-medium text-vision-text"></div>
+    <header className="h-14 flex items-center justify-between px-6 border-b border-vision-border/5 bg-vision-panel/30 backdrop-blur-sm x1">
+      <h1 className="text-[15px] font-semibold text-[#121212] m-0">{pageTitle(pathname)}</h1>
 
-      <div className="flex items-center gap-2.5">
-        <Link to="/dashboard/compiler" title="Change on the Compiler page">
-          <Badge tone={mode === "MANUAL" ? "ok" : "warn"}>{mode ?? "…"}</Badge>
-        </Link>
+      <PillGroup>
+        <Seg to="/dashboard/compiler" icon={mode == null ? Loader : manual ? Gamepad2 : Brain} anim={mode == null ? "tb-spin-fast" : manual ? "tb-wiggle" : "tb-pulse"} tone={mode == null ? "neutral" : manual ? "ok" : "warn"} title="Who is driving: you (Manual) or the brain (Autonomous). Change it on the Compiler page.">{modeLabel}</Seg>
         {sim.available && (
-          <Link to="/dashboard/simulation" title="Simulation view — change on the Simulation page">
-            <Badge tone="neutral">SIM · {sim.mode === "autonomous" ? "AUTONOMOUS" : "COMPILER"}</Badge>
-          </Link>
+          <Seg to="/dashboard/simulation" icon={Cuboid} anim="tb-spin" tone="info" title="What the simulator shows. Change it on the Simulation page.">
+            {`Sim · ${sim.mode === "autonomous" ? "Autonomous" : "Compiler"}`}
+          </Seg>
         )}
-        <RobotLinkBadges />
-      </div>
+        <RobotLinkBadges variant="pill" />
+      </PillGroup>
     </header>
   );
 }

@@ -8,6 +8,8 @@ import AuthLayout, { submitCls } from "../components/auth/AuthLayout";
 import FloatingInput from "../components/auth/FloatingInput";
 import PasswordField from "../components/auth/PasswordField";
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export default function Login() {
   const saved = getRememberedLogin();
   const location = useLocation();
@@ -19,6 +21,7 @@ export default function Login() {
   const [remember, setRemember] = useState(saved.remember);
   const [error, setError] = useState(null);
   const [submitting, setSubmitting] = useState(false);
+  const [emailTouched, setEmailTouched] = useState(false);
 
   useEffect(() => {
     document.title = "Log in - Vision";
@@ -27,11 +30,20 @@ export default function Login() {
   const target = location.state?.from?.pathname ?? "/dashboard";
   if (initialized && user) return <Navigate to={target} replace />;
 
-  // Button only works when both fields are filled
-  const isFormValid = email.trim().length > 0 && password.length > 0;
+  // Live email validation
+  const emailError =
+    emailTouched && email.length > 0 && !EMAIL_RE.test(email.trim())
+      ? "Enter a valid email address"
+      : null;
+
+  const isFormValid =
+    email.trim().length > 0 &&
+    EMAIL_RE.test(email.trim()) &&
+    password.length > 0;
 
   const submit = async (e) => {
     e.preventDefault();
+    setEmailTouched(true);
     if (!isFormValid || submitting) return;
 
     setError(null);
@@ -85,7 +97,12 @@ export default function Login() {
           autoComplete="username"
           autoFocus={!email}
           value={email}
-          onChange={setEmail}
+          onChange={(val) => {
+            setEmail(val);
+            if (!emailTouched) setEmailTouched(true); // start validating as soon as user types
+          }}
+          onBlur={() => setEmailTouched(true)}
+          error={emailError}
         />
 
         <PasswordField

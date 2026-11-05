@@ -62,8 +62,16 @@ export default function Register() {
   };
 
   const isFormValid = !Object.values(errs).some(Boolean);
+
   const touch = (k) => () => setTouched((t) => ({ ...t, [k]: true }));
-  const show = (k) => (touched[k] ? errs[k] : null);
+
+  // Email shows error while typing, others only after blur
+  const show = (k) => {
+    if (k === "email") {
+      return email.length > 0 ? errs.email : null;
+    }
+    return touched[k] ? errs[k] : null;
+  };
 
   const submit = async (e) => {
     e.preventDefault();

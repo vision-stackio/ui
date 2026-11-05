@@ -122,3 +122,19 @@ body { font-family: ui-sans-serif, system-ui, sans-serif; background-color: rgb(
 @keyframes authIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 .auth-in{animation:authIn .35s ease-out}
 @media (prefers-reduced-motion:reduce){.auth-in{animation:none}}
+
+/* Top-bar status icons (small looping animations; off when the system asks for reduced motion) */
+@keyframes tbWiggle{0%,60%,100%{transform:rotate(0)}10%{transform:rotate(-14deg)}20%{transform:rotate(12deg)}30%{transform:rotate(-8deg)}40%{transform:rotate(5deg)}}
+@keyframes tbPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.18);opacity:.75}}
+@keyframes tbSpin{to{transform:rotate(360deg)}}
+@keyframes tbBlink{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes tbFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+@keyframes tbShake{0%,80%,100%{transform:translateX(0)}84%{transform:translateX(-2px)}88%{transform:translateX(2px)}92%{transform:translateX(-2px)}96%{transform:translateX(1px)}}
+.tb-wiggle{animation:tbWiggle 3.2s ease-in-out infinite;transform-origin:50% 80%}
+.tb-pulse{animation:tbPulse 1.8s ease-in-out infinite}
+.tb-spin{animation:tbSpin 6s linear infinite}
+.tb-spin-fast{animation:tbSpin 1s linear infinite}
+.tb-blink{animation:tbBlink 1.6s ease-in-out infinite}
+.tb-float{animation:tbFloat 2s ease-in-out infinite}
+.tb-shake{animation:tbShake 3s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.tb-wiggle,.tb-pulse,.tb-spin,.tb-spin-fast,.tb-blink,.tb-float,.tb-shake{animation:none}}

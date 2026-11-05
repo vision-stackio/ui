@@ -24,7 +24,7 @@ export default function AuthLayout({
               {title}
             </h1>
             {subtitle && (
-              <p className="text-[#444746] text-lg font-normal">{subtitle}</p>
+              <p className="text-[#444746] text-lg cool">{subtitle}</p>
             )}
           </div>
           <div className="hidden md:block text-gray-400 text-sm mt-10">
@@ -68,7 +68,7 @@ export default function AuthLayout({
 
 /** Black when valid, same style as Forgot Password */
 export const submitCls = (isValid) =>
-  `w-full h-11 rounded-lg font-medium transition-all duration-300 ${
+  `w-full h-11 cool rounded-lg font-medium transition-all duration-300 ${
     isValid
       ? "bg-[#1b1b1c] text-white shadow-lg shadow-black/10 cursor-pointer hover:opacity-90 active:scale-[0.98]"
       : "bg-gray-100 text-slate-500 cursor-not-allowed"
